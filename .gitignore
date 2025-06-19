@@ -73,3 +73,8 @@ crashlytics-build.properties
 # Temporary auto-generated Android Assets
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
+/Epic Run And Gun 2D/.idea
+/Epic Run And Gun 2D/Assets/DO NOT SHIP
+Epic Run And Gun 2D/Assets/DO NOT SHIP.meta
+/Epic Run And Gun 2D/Library
+/Epic Run And Gun 2D/Temp
