@@ -78,3 +78,4 @@ crashlytics-build.properties
 Epic Run And Gun 2D/Assets/DO NOT SHIP.meta
 /Epic Run And Gun 2D/Library
 /Epic Run And Gun 2D/Temp
+*.dwlt
