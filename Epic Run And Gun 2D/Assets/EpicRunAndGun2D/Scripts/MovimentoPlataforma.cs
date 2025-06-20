@@ -15,7 +15,7 @@ public class MovimentoPlataforma : MonoBehaviour
     void Start()
     {
         posicaoInicial = transform.position;
-        posicaoFinal = new Vector2(0, posicaoInicial.y + moverY);
+        posicaoFinal = new Vector2(0, posicaoInicial.y + Mathf.Abs(moverY));
     }
 
     // Este metódo é chamado pela Unity no incio de cada quadro/frame.
@@ -23,7 +23,7 @@ public class MovimentoPlataforma : MonoBehaviour
     {
         if (transform.position.y < posicaoFinal.y && estaIndoProFinal == true)
         {
-            transform.Translate(new Vector2(0, velocidadeMover * Time.deltaTime));
+            transform.Translate(new Vector2(0, Mathf.Abs(velocidadeMover) * Time.deltaTime));
         }
         else if (transform.position.y >= posicaoFinal.y)
         {
@@ -31,7 +31,7 @@ public class MovimentoPlataforma : MonoBehaviour
         }
         if (transform.position.y > posicaoInicial.y && estaIndoProFinal == false)
         {
-            transform.Translate(new Vector2(0, -velocidadeMover * Time.deltaTime));
+            transform.Translate(new Vector2(0, -Mathf.Abs(velocidadeMover) * Time.deltaTime));
         }
         else if (transform.position.y <= posicaoInicial.y)
         {
