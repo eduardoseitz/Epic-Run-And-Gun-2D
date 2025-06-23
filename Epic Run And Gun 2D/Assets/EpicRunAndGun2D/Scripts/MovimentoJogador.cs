@@ -8,6 +8,7 @@ public class MovimentoJogador : MonoBehaviour
     public float velocidadeCaminhar = 5f;
     public float forcaPulo = 7f;
     public Rigidbody2D rigidbody2D;
+    public SpriteRenderer spriteRenderer;
     
     // Variaveis privadas.
     private float controleHorizontal;
@@ -56,7 +57,19 @@ public class MovimentoJogador : MonoBehaviour
     {
         if (estaSeAbaixando == false)
         {
-            transform.Translate(new Vector2(controleHorizontal * velocidadeCaminhar * Time.deltaTime, 0));   
+            transform.Translate(new Vector2(controleHorizontal * velocidadeCaminhar * Time.deltaTime, 0));
+
+            if (seEstaNoChao == true && spriteRenderer == true)
+            {
+                if (controleHorizontal < -0.1f && spriteRenderer.flipX == false)
+                {
+                    spriteRenderer.flipX = true;
+                }
+                else if (controleHorizontal > 0.1f && spriteRenderer.flipX == true)
+                {
+                    spriteRenderer.flipX = false;
+                }
+            }
         }
     }
 
