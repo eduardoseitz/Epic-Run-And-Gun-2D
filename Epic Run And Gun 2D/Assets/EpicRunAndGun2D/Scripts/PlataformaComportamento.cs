@@ -3,44 +3,79 @@ using UnityEngine;
 public class PlataformaComportamento : MonoBehaviour
 {
     // Variaveis publicas.
+    public float moverX = -1;
     public float moverY = 1f;
-    public float velocidadeMover = 0.5f;
+    public float velocidadeMoverX = 0.5f;
+    public float velocidadeMoverY = 0.5f;
     
     // Variaveis privadas.
     [SerializeField] private Vector2 posicaoInicial;
     [SerializeField] private Vector2 posicaoFinal;
-    [SerializeField] private bool estaIndoProFinal = true;
+    [SerializeField] private bool estaIndoProFinalNoEixoX = true;
+    [SerializeField] private bool estaIndoProFinalNoEixoY = true;
     
     // Este metódo é chamado pela Unity no incio do jogo.
     private void Start()
     {
         posicaoInicial = transform.position;
-        posicaoFinal = new Vector2(0, posicaoInicial.y + moverY);
+        posicaoFinal = new Vector2(posicaoInicial.x + moverX, posicaoInicial.y + moverY);
     }
 
     // Este metódo é chamado pela Unity no incio de cada quadro/frame.
     private void Update()
     {
-        if (estaIndoProFinal == true)
+        MoverEixoX();
+        MoverEixoY();
+    }
+
+    private void MoverEixoX()
+    {
+        if (estaIndoProFinalNoEixoX == true)
         {
-            if (Vector2.Distance(transform.position, posicaoFinal) > 0.1f)
+            if (Mathf.Abs(transform.position.x - posicaoFinal.x) > 0.1f)
             {
-                transform.Translate(new Vector2(0, Mathf.Abs(velocidadeMover) * Mathf.Sign(moverY) * Time.deltaTime));
+                transform.Translate(new Vector2(Mathf.Abs(velocidadeMoverX) * Mathf.Sign(moverX) * Time.deltaTime, 0));
             }
             else
             {
-                estaIndoProFinal = false;
+                estaIndoProFinalNoEixoX = false;
             }
         }
-        else if (estaIndoProFinal == false)
+        else
         {
-            if (Vector2.Distance(transform.position, posicaoInicial) > 0.1f)
+            if (Mathf.Abs(transform.position.x - posicaoInicial.x) > 0.1f)
             {
-                transform.Translate(new Vector2(0, Mathf.Abs(velocidadeMover) * -Mathf.Sign(moverY) * Time.deltaTime));
+                transform.Translate(new Vector2(Mathf.Abs(velocidadeMoverX) * -Mathf.Sign(moverX) * Time.deltaTime, 0));
             }
             else
             {
-                estaIndoProFinal = true;
+                estaIndoProFinalNoEixoX = true;
+            }
+        }
+    }
+    
+    private void MoverEixoY()
+    {
+        if (estaIndoProFinalNoEixoY == true)
+        {
+            if (Mathf.Abs(transform.position.y - posicaoFinal.y) > 0.1f)
+            {
+                transform.Translate(new Vector2(0, Mathf.Abs(velocidadeMoverY) * Mathf.Sign(moverY) * Time.deltaTime));
+            }
+            else
+            {
+                estaIndoProFinalNoEixoY = false;
+            }
+        }
+        else 
+        {
+            if (Mathf.Abs(transform.position.y - posicaoInicial.y) > 0.1f)
+            {
+                transform.Translate(new Vector2(0, Mathf.Abs(velocidadeMoverY) * -Mathf.Sign(moverY) * Time.deltaTime));
+            }
+            else
+            {
+                estaIndoProFinalNoEixoY = true;
             }
         }
     }
