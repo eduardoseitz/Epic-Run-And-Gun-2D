@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class MovimentoPlataforma : MonoBehaviour
+public class PlataformaComportamento : MonoBehaviour
 {
     // Variaveis publicas.
     public float moverY = 1f;
@@ -12,19 +12,14 @@ public class MovimentoPlataforma : MonoBehaviour
     [SerializeField] private bool estaIndoProFinal = true;
     
     // Este metódo é chamado pela Unity no incio do jogo.
-    void Start()
+    private void Start()
     {
         posicaoInicial = transform.position;
         posicaoFinal = new Vector2(0, posicaoInicial.y + moverY);
-        //
-        // if (moverY < 0)
-        // {
-        //     estaIndoProFinal = false;   
-        // }
     }
 
     // Este metódo é chamado pela Unity no incio de cada quadro/frame.
-    void Update()
+    private void Update()
     {
         if (estaIndoProFinal == true)
         {
@@ -48,14 +43,5 @@ public class MovimentoPlataforma : MonoBehaviour
                 estaIndoProFinal = true;
             }
         }
-        
-        // if (transform.position.y > posicaoInicial.y && estaIndoProFinal == false)
-        // {
-        //     transform.Translate(new Vector2(0, -Mathf.Abs(velocidadeMover) * Time.deltaTime));
-        // }
-        // else if (transform.position.y <= posicaoInicial.y)
-        // {
-        //     estaIndoProFinal = true;
-        // }
     }
 }

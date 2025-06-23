@@ -1,8 +1,6 @@
-using System;
-using Unity.VisualScripting;
 using UnityEngine;
 
-public class MovimentoJogador : MonoBehaviour
+public class JogadorMoviment : MonoBehaviour
 {
     // Variaveis publicas.
     public float velocidadeCaminhar = 5f;
@@ -17,7 +15,7 @@ public class MovimentoJogador : MonoBehaviour
     private bool estaSeAbaixando = false;
 
     // Este metódo é chamado pela Unity no incio do jogo.
-    void Start()
+    public void Start()
     {
         escalaOriginal = transform.localScale;
     }
@@ -59,7 +57,7 @@ public class MovimentoJogador : MonoBehaviour
         {
             transform.Translate(new Vector2(controleHorizontal * velocidadeCaminhar * Time.deltaTime, 0));
 
-            if (seEstaNoChao == true && spriteRenderer == true)
+            if (spriteRenderer == true)
             {
                 if (controleHorizontal < -0.1f && spriteRenderer.flipX == false)
                 {
