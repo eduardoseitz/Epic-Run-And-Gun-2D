@@ -8,7 +8,7 @@ public class ProjetilComportamento : MonoBehaviour
     // Este metódo é chamado pela Unity no incio do jogo.
     public void Start()
     {
-        Destroy(this.gameObject, destruirDespoisDeSegundos);
+        Destroy(gameObject, destruirDespoisDeSegundos);
     }
 
     // Este metódo é chamado pela Unity no incio de cada quadro/frame.
@@ -16,4 +16,17 @@ public class ProjetilComportamento : MonoBehaviour
     {
         transform.Translate(Vector2.right * velocidade * Time.deltaTime);
     }
+
+    private void OnCollisionEnter2D(Collision2D outroObjeto)
+    {
+        switch (outroObjeto.gameObject.tag)
+        {
+            case "Inimigo":
+                Destroy(outroObjeto.gameObject);
+                break;
+        }
+        
+        Destroy(gameObject);
+    }
+    
 }

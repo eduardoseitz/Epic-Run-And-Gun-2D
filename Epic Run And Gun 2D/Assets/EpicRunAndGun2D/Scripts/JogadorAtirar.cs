@@ -24,7 +24,7 @@ public class ogadorAtirar : MonoBehaviour
         }
         else if (spriteRenderer.flipX == true)
         {
-            Instantiate(projetilPrefab, posicaoArmaDireita.transform.position, posicaoArmaEsquerda.transform.rotation);
+            Instantiate(projetilPrefab, posicaoArmaEsquerda.transform.position, posicaoArmaEsquerda.transform.rotation);
         }
     }
 }

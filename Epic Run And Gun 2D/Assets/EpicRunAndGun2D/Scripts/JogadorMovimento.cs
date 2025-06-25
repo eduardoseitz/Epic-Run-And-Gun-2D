@@ -3,8 +3,8 @@ using UnityEngine;
 public class JogadorMoviment : MonoBehaviour
 {
     // Variaveis publicas.
-    public float velocidadeCaminhar = 5f;
-    public float forcaPulo = 7f;
+    public float velocidadeCaminhar = 6f;
+    public float forcaPulo = 8f;
     public Rigidbody2D rigidbody2D;
     public SpriteRenderer spriteRenderer;
     

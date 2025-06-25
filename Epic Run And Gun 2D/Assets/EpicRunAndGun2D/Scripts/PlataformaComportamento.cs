@@ -3,10 +3,10 @@ using UnityEngine;
 public class PlataformaComportamento : MonoBehaviour
 {
     // Variaveis publicas.
-    public float moverX = -1;
-    public float moverY = 1f;
-    public float velocidadeMoverX = 0.5f;
-    public float velocidadeMoverY = 0.5f;
+    public float moverX = 1f;
+    public float moverY = 0;
+    public float velocidadeMoverX = 1f;
+    public float velocidadeMoverY = 1f;
     
     // Variaveis privadas.
     [SerializeField] private Vector2 posicaoInicial;

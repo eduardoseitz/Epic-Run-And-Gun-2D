@@ -3,7 +3,9 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 3
-  tags: []
+  tags:
+  - Morte
+  - Inimigo
   layers:
   - Default
   - TransparentFX
@@ -38,14 +40,20 @@ TagManager:
   - 
   - 
   m_SortingLayers:
-  - name: Cenario
-    uniqueID: 312617621
+  - name: PlanoDeFundo
+    uniqueID: 2005631151
+    locked: 0
+  - name: Level
+    uniqueID: 1044028103
     locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: Player
-    uniqueID: 772019631
+  - name: Vivos
+    uniqueID: 555398491
+    locked: 0
+  - name: PlanoDaFrente
+    uniqueID: 2642584343
     locked: 0
   m_RenderingLayers:
   - Default
