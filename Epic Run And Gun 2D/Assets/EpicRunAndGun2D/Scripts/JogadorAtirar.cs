@@ -3,9 +3,8 @@ using UnityEngine;
 public class ogadorAtirar : MonoBehaviour
 {
     public GameObject projetilPrefab;
-    public Transform posicaoArmaEsquerda;
-    public Transform posicaoArmaDireita;
-    public SpriteRenderer spriteRenderer;
+    public Transform posicaoArma;
+    public JogadorMoviment jogadorMoviment;
     
     // Este metódo é chamado pela Unity no incio de cada quadro/frame.
     private void Update()
@@ -18,13 +17,13 @@ public class ogadorAtirar : MonoBehaviour
 
     private void Atirar()
     {
-        if (spriteRenderer.flipX == false)
+        if (jogadorMoviment.olhandoPraEsquerda)
         {
-            Instantiate(projetilPrefab, posicaoArmaDireita.transform.position, posicaoArmaDireita.transform.rotation);
+            Instantiate(projetilPrefab, posicaoArma.transform.position, new Quaternion(0, 180, 0, 0));
         }
-        else if (spriteRenderer.flipX == true)
+        else
         {
-            Instantiate(projetilPrefab, posicaoArmaEsquerda.transform.position, posicaoArmaEsquerda.transform.rotation);
+            Instantiate(projetilPrefab, posicaoArma.transform.position, Quaternion.identity);
         }
     }
 }

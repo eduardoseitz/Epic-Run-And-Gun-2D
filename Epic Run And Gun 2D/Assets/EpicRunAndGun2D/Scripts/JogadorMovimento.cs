@@ -2,11 +2,13 @@ using UnityEngine;
 
 public class JogadorMoviment : MonoBehaviour
 {
+    
     // Variaveis publicas.
     public float velocidadeCaminhar = 6f;
-    public float forcaPulo = 8f;
+    public float forcaPulo = 7f;
     public Rigidbody2D rigidbody2D;
     public SpriteRenderer spriteRenderer;
+    [HideInInspector] public bool olhandoPraEsquerda;
     
     // Variaveis privadas.
     private float controleHorizontal;
@@ -57,17 +59,7 @@ public class JogadorMoviment : MonoBehaviour
         {
             transform.Translate(new Vector2(controleHorizontal * velocidadeCaminhar * Time.deltaTime, 0));
 
-            if (spriteRenderer == true)
-            {
-                if (controleHorizontal < -0.1f && spriteRenderer.flipX == false)
-                {
-                    spriteRenderer.flipX = true;
-                }
-                else if (controleHorizontal > 0.1f && spriteRenderer.flipX == true)
-                {
-                    spriteRenderer.flipX = false;
-                }
-            }
+            OlharDirecao();
         }
     }
 
@@ -83,7 +75,7 @@ public class JogadorMoviment : MonoBehaviour
     {
         if (seEstaNoChao == true && estaSeAbaixando == false)
         {
-            transform.localScale = new Vector2(escalaOriginal.x, escalaOriginal.y / 2);
+            transform.localScale = new Vector2(transform.localScale.x, escalaOriginal.y / 2);
             estaSeAbaixando = true;
         }
     }
@@ -92,8 +84,22 @@ public class JogadorMoviment : MonoBehaviour
     {
         if (estaSeAbaixando == true)
         {
-            transform.localScale = escalaOriginal;
+            transform.localScale = new Vector2(transform.localScale.x, escalaOriginal.y);
             estaSeAbaixando = false;
+        }
+    }
+
+    private void OlharDirecao()
+    {
+        if (controleHorizontal < -0.1f && olhandoPraEsquerda == false)
+        {
+            transform.localScale = new Vector2(-escalaOriginal.x, transform.localScale.y);
+            olhandoPraEsquerda = true;
+        }
+        else if (controleHorizontal > 0.1f && olhandoPraEsquerda == true)
+        {
+            transform.localScale = new Vector2(escalaOriginal.x, transform.localScale.y);
+            olhandoPraEsquerda = false;
         }
     }
 }
