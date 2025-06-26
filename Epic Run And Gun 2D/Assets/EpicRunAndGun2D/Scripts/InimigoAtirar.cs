@@ -5,8 +5,8 @@ public class InimigoAtirar : MonoBehaviour
     public GameObject projetilPrefab;
     public Transform posicaoArma;
     public SpriteRenderer spriteRenderer;
-    public int chanceDeAtirar = 30;
-    public float atirarACadaSegundos = 0.5f;
+    public int chanceDeAtirar = 15;
+    public float atirarACadaSegundos = 1f;
     
     [HideInInspector] public InimigoMovimento inimigoMovimento;
     

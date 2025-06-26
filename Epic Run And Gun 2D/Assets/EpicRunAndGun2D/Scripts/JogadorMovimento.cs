@@ -7,7 +7,6 @@ public class JogadorMoviment : MonoBehaviour
     public float velocidadeCaminhar = 6f;
     public float forcaPulo = 7f;
     public Rigidbody2D rigidbody2D;
-    public SpriteRenderer spriteRenderer;
     [HideInInspector] public bool olhandoPraEsquerda;
     
     // Variaveis privadas.

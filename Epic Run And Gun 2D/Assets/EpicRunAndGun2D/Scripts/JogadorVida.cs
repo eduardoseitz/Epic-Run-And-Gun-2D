@@ -22,9 +22,10 @@ public class JogadorVida : MonoBehaviour
 
     private void TomarDano()
     {
-        Debug.Log("This was called " + vidas);
         vidas = vidas - 1;
 
+        Debug.Log("Vidas restantes para o " + gameObject.name + " " + vidas);
+        
         if (vidas <= 0)
         {
             Morrer();
