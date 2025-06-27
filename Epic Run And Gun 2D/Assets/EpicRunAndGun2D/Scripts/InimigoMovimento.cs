@@ -4,11 +4,13 @@ public class InimigoMovimento : MonoBehaviour
 {
     // Variaveis publicas.
     public Transform player;
-    public float distanciaParaFicarAgressivo = 10;
-    public float forcaPulo = 7f;
+    public float moverX = 2f;
+    public float distanciaParaFicarAgressivo = 10f;
+    public float velocidadeCaminhar = 2f;
+    public float forcaPulo = 3f;
     public Rigidbody2D rigidbody2D;
-    public int chanceDePular = 10;
-    public int chanceDeAbaixar = 1;
+    [Range(1, 100)] public int chanceDePular = 10;
+    [Range(1, 100)] public int chanceDeAbaixar = 1;
     [HideInInspector] public bool estaAgressivo;
     [HideInInspector] public bool olhandoPraEsquerda;
 
@@ -16,11 +18,16 @@ public class InimigoMovimento : MonoBehaviour
     private bool seEstaNoChao = true;
     private Vector2 escalaOriginal;
     private bool estaSeAbaixando = false;
+    private Vector2 posicaoInicial;
+    [SerializeField] private Vector2 posicaoFinal;
+    [SerializeField] private bool estaIndoProFinal = true;
     
     // Este metódo é chamado pela Unity no incio do jogo.
     public void Start()
     {
         escalaOriginal = transform.localScale;
+        posicaoInicial = transform.position;
+        posicaoFinal = new Vector2(posicaoInicial.x + moverX, posicaoInicial.y);
         
         InvokeRepeating(nameof(Pular), 1f, 1f);
     }
@@ -34,12 +41,13 @@ public class InimigoMovimento : MonoBehaviour
             {
                 estaAgressivo = true;
 
-                OlharDirecao();
                 Abaixar();
+                OlharParaJogador();
             }
-            else
+            else if (estaAgressivo == false)
             {
-                estaAgressivo = false;
+                Caminhar();
+                OlharParaCaminho();
             }
         }
     }
@@ -52,6 +60,63 @@ public class InimigoMovimento : MonoBehaviour
     private void OnTriggerExit2D(Collider2D other)
     {
         seEstaNoChao = false;
+    }
+    
+    private void Caminhar()
+    {
+        if (estaSeAbaixando == false)
+        {
+            if (estaIndoProFinal == true)
+            {
+                if (Mathf.Abs(transform.position.x - posicaoFinal.x) > 0.1f)
+                {
+                    transform.Translate(new Vector2(Mathf.Abs(velocidadeCaminhar) * Mathf.Sign(moverX) * Time.deltaTime, 0));
+                }
+                else
+                {
+                    estaIndoProFinal = false;
+                }
+            }
+            else
+            {
+                if (Mathf.Abs(transform.position.x - posicaoInicial.x) > 0.1f)
+                {
+                    transform.Translate(new Vector2(Mathf.Abs(velocidadeCaminhar) * -Mathf.Sign(moverX) * Time.deltaTime, 0));
+                }
+                else
+                {
+                    estaIndoProFinal = true;
+                }
+            }
+        }
+    }
+    
+    private void OlharParaCaminho()
+    {
+        if ((estaIndoProFinal == true && Mathf.Sign(moverX) >= 0) || estaIndoProFinal == false && Mathf.Sign(moverX) < 0)
+        {
+            transform.localScale = new Vector2(escalaOriginal.x, transform.localScale.y);
+            olhandoPraEsquerda = false;
+        }
+        else
+        {
+            transform.localScale = new Vector2(-escalaOriginal.x, transform.localScale.y);
+            olhandoPraEsquerda = true;
+        }
+    }
+    
+    private void OlharParaJogador()
+    {
+        if (player.position.x < transform.position.x && olhandoPraEsquerda == false)
+        {
+            transform.localScale = new Vector2(-escalaOriginal.x, transform.localScale.y);
+            olhandoPraEsquerda = true;
+        }
+        else if (player.position.x > transform.position.x && olhandoPraEsquerda == true)
+        {
+            transform.localScale = new Vector2(escalaOriginal.x, transform.localScale.y);
+            olhandoPraEsquerda = false;
+        }
     }
     
     private void Pular()
@@ -85,20 +150,6 @@ public class InimigoMovimento : MonoBehaviour
         {
             transform.localScale = new Vector2(transform.localScale.x, escalaOriginal.y);
             estaSeAbaixando = false;
-        }
-    }
-
-    private void OlharDirecao()
-    {
-        if (player.position.x < transform.position.x && olhandoPraEsquerda == false)
-        {
-            transform.localScale = new Vector2(-escalaOriginal.x, transform.localScale.y);
-            olhandoPraEsquerda = true;
-        }
-        else if (player.position.x > transform.position.x && olhandoPraEsquerda == true)
-        {
-            transform.localScale = new Vector2(escalaOriginal.x, transform.localScale.y);
-            olhandoPraEsquerda = false;
         }
     }
 }

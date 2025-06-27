@@ -9,10 +9,10 @@ public class PlataformaComportamento : MonoBehaviour
     public float velocidadeMoverY = 1f;
     
     // Variaveis privadas.
-    [SerializeField] private Vector2 posicaoInicial;
-    [SerializeField] private Vector2 posicaoFinal;
-    [SerializeField] private bool estaIndoProFinalNoEixoX = true;
-    [SerializeField] private bool estaIndoProFinalNoEixoY = true;
+    private Vector2 posicaoInicial;
+    private Vector2 posicaoFinal;
+    private bool estaIndoProFinalNoEixoX = true;
+    private bool estaIndoProFinalNoEixoY = true;
     
     // Este metódo é chamado pela Unity no incio do jogo.
     private void Start()

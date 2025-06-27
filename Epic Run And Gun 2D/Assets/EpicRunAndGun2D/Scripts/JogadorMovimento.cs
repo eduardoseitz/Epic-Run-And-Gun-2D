@@ -61,6 +61,20 @@ public class JogadorMoviment : MonoBehaviour
             OlharDirecao();
         }
     }
+    
+    private void OlharDirecao()
+    {
+        if (controleHorizontal < -0.1f && olhandoPraEsquerda == false)
+        {
+            transform.localScale = new Vector2(-escalaOriginal.x, transform.localScale.y);
+            olhandoPraEsquerda = true;
+        }
+        else if (controleHorizontal > 0.1f && olhandoPraEsquerda == true)
+        {
+            transform.localScale = new Vector2(escalaOriginal.x, transform.localScale.y);
+            olhandoPraEsquerda = false;
+        }
+    }
 
     private void Pular()
     {
@@ -85,20 +99,6 @@ public class JogadorMoviment : MonoBehaviour
         {
             transform.localScale = new Vector2(transform.localScale.x, escalaOriginal.y);
             estaSeAbaixando = false;
-        }
-    }
-
-    private void OlharDirecao()
-    {
-        if (controleHorizontal < -0.1f && olhandoPraEsquerda == false)
-        {
-            transform.localScale = new Vector2(-escalaOriginal.x, transform.localScale.y);
-            olhandoPraEsquerda = true;
-        }
-        else if (controleHorizontal > 0.1f && olhandoPraEsquerda == true)
-        {
-            transform.localScale = new Vector2(escalaOriginal.x, transform.localScale.y);
-            olhandoPraEsquerda = false;
         }
     }
 }

@@ -22,7 +22,7 @@ public class InimigoVida : MonoBehaviour
     {
         vidas = vidas - 1;
 
-        Debug.Log("Vidas restantes para o " + gameObject.name + " " + vidas);
+        Debug.Log("Vidas restantes para o " + gameObject.name + ": " + vidas);
         
         if (vidas <= 0)
         {
