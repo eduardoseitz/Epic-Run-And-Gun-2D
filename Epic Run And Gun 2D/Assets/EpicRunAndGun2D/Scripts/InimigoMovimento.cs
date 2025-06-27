@@ -19,8 +19,8 @@ public class InimigoMovimento : MonoBehaviour
     private Vector2 escalaOriginal;
     private bool estaSeAbaixando = false;
     private Vector2 posicaoInicial;
-    [SerializeField] private Vector2 posicaoFinal;
-    [SerializeField] private bool estaIndoProFinal = true;
+    private Vector2 posicaoFinal;
+    private bool estaIndoProFinal = true;
     
     // Este metódo é chamado pela Unity no incio do jogo.
     public void Start()
