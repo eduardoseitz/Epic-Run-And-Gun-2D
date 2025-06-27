@@ -34,6 +34,6 @@ public class JogadorVida : MonoBehaviour
 
     private void Morrer()
     {
-        Destroy(gameObject);
+        gameObject.SetActive(false);
     }
 }
