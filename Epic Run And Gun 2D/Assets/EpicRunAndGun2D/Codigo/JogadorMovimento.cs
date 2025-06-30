@@ -2,12 +2,11 @@ using UnityEngine;
 
 public class JogadorMoviment : MonoBehaviour
 {
-    
     // Variaveis publicas.
-    public float velocidadeCaminhar = 6f;
-    public float forcaPulo = 7f;
+    public float velocidadeAoCaminhar = 6f;
+    public float forcaDoPulo = 7f;
     public Rigidbody2D rigidbody2D;
-    [HideInInspector] public bool olhandoPraEsquerda;
+    [HideInInspector] public bool estaOlhandoParaEsquerda;
     
     // Variaveis privadas.
     private float controleHorizontal;
@@ -56,7 +55,7 @@ public class JogadorMoviment : MonoBehaviour
     {
         if (estaSeAbaixando == false)
         {
-            transform.Translate(new Vector2(controleHorizontal * velocidadeCaminhar * Time.deltaTime, 0));
+            transform.Translate(new Vector2(controleHorizontal * velocidadeAoCaminhar * Time.deltaTime, 0));
 
             OlharDirecao();
         }
@@ -64,15 +63,15 @@ public class JogadorMoviment : MonoBehaviour
     
     private void OlharDirecao()
     {
-        if (controleHorizontal < -0.1f && olhandoPraEsquerda == false)
+        if (controleHorizontal < -0.1f && estaOlhandoParaEsquerda == false)
         {
             transform.localScale = new Vector2(-escalaOriginal.x, transform.localScale.y);
-            olhandoPraEsquerda = true;
+            estaOlhandoParaEsquerda = true;
         }
-        else if (controleHorizontal > 0.1f && olhandoPraEsquerda == true)
+        else if (controleHorizontal > 0.1f && estaOlhandoParaEsquerda == true)
         {
             transform.localScale = new Vector2(escalaOriginal.x, transform.localScale.y);
-            olhandoPraEsquerda = false;
+            estaOlhandoParaEsquerda = false;
         }
     }
 
@@ -80,7 +79,7 @@ public class JogadorMoviment : MonoBehaviour
     {
         if (rigidbody2D == true && seEstaNoChao == true)
         {
-            rigidbody2D.AddForceY(forcaPulo, ForceMode2D.Impulse);
+            rigidbody2D.AddForceY(forcaDoPulo, ForceMode2D.Impulse);
         }
     }
 

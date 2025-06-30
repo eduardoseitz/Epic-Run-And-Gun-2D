@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class ogadorAtirar : MonoBehaviour
 {
+    // Variaveis publicas.
     public GameObject projetilPrefab;
     public Transform posicaoArma;
     public JogadorMoviment jogadorMoviment;
@@ -17,7 +18,7 @@ public class ogadorAtirar : MonoBehaviour
 
     private void Atirar()
     {
-        if (jogadorMoviment.olhandoPraEsquerda)
+        if (jogadorMoviment.estaOlhandoParaEsquerda)
         {
             Instantiate(projetilPrefab, posicaoArma.transform.position, new Quaternion(0, 180, 0, 0));
         }

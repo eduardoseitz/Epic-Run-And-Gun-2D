@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class InimigoVida : MonoBehaviour
 {
+    // Variaveis publicas.
     public int vidas = 3;
 
     private void OnCollisionEnter2D(Collision2D outroObjeto)

@@ -1,14 +1,18 @@
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class JogadorVida : MonoBehaviour
 {
-    public int vidas = 3;
+    // Variaveis publicas.
+    public int vidas = 5;
     public GerenciadorDeJogo gerenciadorDeJogo;
     public Image imagemBarraDeVida;
     
+    // Variaveis privadas.
     private int totalDeVidas;
 
+    // Este metódo é chamado pela Unity no incio do jogo.
     private void Start()
     {
         totalDeVidas = vidas;
@@ -20,20 +24,34 @@ public class JogadorVida : MonoBehaviour
         switch (outroObjeto.gameObject.tag)
         {
             case "Projetil":
-                TomarDano(1);
+                MudarVida(-1);
                 break;
             case "Inimigo":
-                TomarDano(1);
+                MudarVida(-1);
                 break;
             case "Morte":
-                TomarDano(vidas);
+                MudarVida(-vidas);
                 break;
         }
     }
 
-    private void TomarDano(int dano)
+    private void OnTriggerEnter2D(Collider2D outroObjeto)
     {
-        vidas = vidas - dano;
+        switch (outroObjeto.gameObject.tag)
+        {
+            case "Ganhar":
+                Ganhar();
+                break;
+            case "Vida":
+                Destroy(outroObjeto.gameObject);
+                MudarVida(+1);
+                break;
+        }
+    }
+
+    private void MudarVida(int dano)
+    {
+        vidas = vidas + dano;
 
         AtualizarBarraDeVida();
         
@@ -63,5 +81,15 @@ public class JogadorVida : MonoBehaviour
         }
         
         gameObject.SetActive(false);
+    }
+
+    private void Ganhar()
+    {
+        Debug.Log(gameObject.name + " ganhou!");
+        
+        if (gerenciadorDeJogo == true)
+        {
+            gerenciadorDeJogo.GanharJogo();
+        }
     }
 }

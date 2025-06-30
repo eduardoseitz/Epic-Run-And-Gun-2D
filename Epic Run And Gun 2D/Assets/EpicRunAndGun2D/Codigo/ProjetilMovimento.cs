@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class ProjetilMovimento : MonoBehaviour
 {
+    // Variaveis publicas.
     public float velocidade = 25f;
     public float destruirDespoisDeSegundos = 2f;
     

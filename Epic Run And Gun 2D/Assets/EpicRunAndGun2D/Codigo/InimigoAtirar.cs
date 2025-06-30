@@ -2,12 +2,12 @@ using UnityEngine;
 
 public class InimigoAtirar : MonoBehaviour
 {
+    // Variaveis publicas.
     public GameObject projetilPrefab;
     public Transform posicaoArma;
     public SpriteRenderer spriteRenderer;
     public int chanceDeAtirar = 15;
     public float atirarACadaSegundos = 1f;
-    
     [HideInInspector] public InimigoMovimento inimigoMovimento;
     
     // Este metódo é chamado pela Unity no incio do jogo.

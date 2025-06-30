@@ -2,7 +2,8 @@ using UnityEngine;
 
 public class NaoDestruirAoCarregarCena : MonoBehaviour
 {
-    private void Awake()
+    // Este metódo é chamado pela Unity no incio do jogo.
+    private void Start()
     {
         transform.SetParent(null);
         DontDestroyOnLoad(this.gameObject);

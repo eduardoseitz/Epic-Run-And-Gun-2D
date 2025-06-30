@@ -1,20 +1,22 @@
-using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class GerenciadorDeJogo : MonoBehaviour
 {
-    public GameObject ganharJogoPainel;
-    public AudioSource ganharJogoSom;
-    public GameObject perderJogoPainel;
-    public AudioSource perderJogoSom;
-    public GameObject jogoPausadoPainel;
+    // Variaveis publicas.
+    public GameObject painelGanharJogo;
+    public AudioSource somAoGanharJogo;
+    public GameObject painelPerderJogo;
+    public AudioSource somAoPerderJogo;
+    public GameObject painelJogoPausado;
 
+    // Este metódo é chamado pela Unity no incio do jogo.
     private void Start()
     {
         ContinuarJogo();
     }
 
+    // Este metódo é chamado pela Unity no incio de cada quadro/frame.
     private void Update()
     {
         if (SceneManager.GetActiveScene().buildIndex != 0)
@@ -30,9 +32,9 @@ public class GerenciadorDeJogo : MonoBehaviour
     {
         Time.timeScale = 0;
 
-        if (jogoPausadoPainel == true)
+        if (painelJogoPausado == true)
         {
-            jogoPausadoPainel.SetActive(true);
+            painelJogoPausado.SetActive(true);
         }
     }
 
@@ -40,9 +42,9 @@ public class GerenciadorDeJogo : MonoBehaviour
     {
         Time.timeScale = 1;
         
-        if (jogoPausadoPainel == true)
+        if (painelJogoPausado == true)
         {
-            jogoPausadoPainel.SetActive(false);
+            painelJogoPausado.SetActive(false);
         }
     }
 
@@ -50,27 +52,27 @@ public class GerenciadorDeJogo : MonoBehaviour
     {
         PausarJogo();
         
-        if (ganharJogoSom == true)
+        if (somAoGanharJogo == true)
         {
-            ganharJogoSom.Play();
+            somAoGanharJogo.Play();
         }
         
-        if (ganharJogoPainel == true)
+        if (painelGanharJogo == true)
         {
-            ganharJogoPainel.SetActive(true);
+            painelGanharJogo.SetActive(true);
         }
     }
 
     public void PerderJogo()
     {
-        if (perderJogoPainel == true)
+        if (painelPerderJogo == true)
         {
-            perderJogoPainel.SetActive(true);
+            painelPerderJogo.SetActive(true);
         }
         
-        if (perderJogoSom == true)
+        if (somAoPerderJogo == true)
         {
-            perderJogoSom.Play();
+            somAoPerderJogo.Play();
         }
         
         Time.timeScale = 0;
