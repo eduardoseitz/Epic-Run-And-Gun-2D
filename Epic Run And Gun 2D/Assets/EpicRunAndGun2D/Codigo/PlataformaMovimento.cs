@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PlataformaComportamento : MonoBehaviour
+public class PlataformaMovimento : MonoBehaviour
 {
     // Variaveis publicas.
     public float moverX = 1f;

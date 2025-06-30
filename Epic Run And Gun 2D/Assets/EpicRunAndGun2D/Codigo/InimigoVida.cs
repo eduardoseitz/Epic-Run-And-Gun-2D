@@ -32,6 +32,8 @@ public class InimigoVida : MonoBehaviour
 
     private void Morrer()
     {
+        Debug.Log(gameObject.name + " morreu!");
+        
         Destroy(gameObject);
     }
 }

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class ProjetilComportamento : MonoBehaviour
+public class ProjetilMovimento : MonoBehaviour
 {
     public float velocidade = 25f;
     public float destruirDespoisDeSegundos = 2f;

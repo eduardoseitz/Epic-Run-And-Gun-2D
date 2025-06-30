@@ -7,6 +7,7 @@ TagManager:
   - Morte
   - Inimigo
   - Projetil
+  - Ganhar
   layers:
   - Default
   - TransparentFX
