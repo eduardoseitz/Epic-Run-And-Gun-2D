@@ -5,6 +5,7 @@ public class InimigoVida : MonoBehaviour
 {
     // Variaveis publicas.
     public int vidas = 3;
+    public AudioSource somAoLevarDano;
 
     private void OnCollisionEnter2D(Collision2D outroObjeto)
     {
@@ -24,6 +25,12 @@ public class InimigoVida : MonoBehaviour
         vidas = vidas - 1;
 
         Debug.Log("Vidas restantes para o " + gameObject.name + ": " + vidas);
+        
+        // Tocar som.
+        if (somAoLevarDano == true)
+        {
+            somAoLevarDano.PlayOneShot(somAoLevarDano.clip);
+        }
         
         if (vidas <= 0)
         {

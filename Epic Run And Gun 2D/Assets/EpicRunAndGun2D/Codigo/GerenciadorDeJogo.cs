@@ -23,7 +23,14 @@ public class GerenciadorDeJogo : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.P))
             {
-                PausarJogo();
+                if (Time.timeScale == 1)
+                {
+                    PausarJogo();
+                }
+                else
+                {
+                    ContinuarJogo();
+                }
             }
         }
     }

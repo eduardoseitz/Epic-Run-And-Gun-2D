@@ -8,6 +8,8 @@ public class JogadorVida : MonoBehaviour
     public int vidas = 5;
     public GerenciadorDeJogo gerenciadorDeJogo;
     public Image imagemBarraDeVida;
+    public AudioSource somAoLevarDano;
+    public AudioSource somAoGanharVida;
     
     // Variaveis privadas.
     private int totalDeVidas;
@@ -40,6 +42,7 @@ public class JogadorVida : MonoBehaviour
         switch (outroObjeto.gameObject.tag)
         {
             case "Ganhar":
+                MudarVida(totalDeVidas);
                 Ganhar();
                 break;
             case "Vida":
@@ -51,15 +54,23 @@ public class JogadorVida : MonoBehaviour
 
     private void MudarVida(int dano)
     {
-        vidas = vidas + dano;
-
+        vidas = Math.Clamp(vidas + dano, 0, totalDeVidas);
         AtualizarBarraDeVida();
         
         Debug.Log("Vidas restantes para o " + gameObject.name + ": " + vidas);
         
-        if (vidas <= 0)
+        if (vidas == 0)
         {
             Morrer();
+        }
+        // Tocar som.
+        else if (somAoGanharVida == true && Math.Sign(dano) > 0)
+        {
+            somAoGanharVida.PlayOneShot(somAoGanharVida.clip);
+        }
+        else if (somAoLevarDano == true && Math.Sign(dano) < 0)
+        {
+            somAoLevarDano.PlayOneShot(somAoLevarDano.clip);
         }
     }
 

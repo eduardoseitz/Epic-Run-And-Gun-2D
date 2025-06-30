@@ -3,9 +3,10 @@ using UnityEngine;
 public class JogadorMoviment : MonoBehaviour
 {
     // Variaveis publicas.
-    public float velocidadeAoCaminhar = 6f;
-    public float forcaDoPulo = 7f;
+    public float velocidadeAoCaminhar = 8f;
+    public float forcaDoPulo = 8f;
     public Rigidbody2D rigidbody2D;
+    public AudioSource somAoPular;
     [HideInInspector] public bool estaOlhandoParaEsquerda;
     
     // Variaveis privadas.
@@ -41,14 +42,20 @@ public class JogadorMoviment : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D col)
+    private void OnTriggerEnter2D(Collider2D outroObjeto)
     {
-        seEstaNoChao = true;
+        if (outroObjeto.gameObject.tag == "Untagged")
+        {
+            seEstaNoChao = true;
+        }
     }
 
-    private void OnTriggerExit2D(Collider2D other)
+    private void OnTriggerExit2D(Collider2D outroObjeto)
     {
-        seEstaNoChao = false;
+        if (outroObjeto.gameObject.tag == "Untagged")
+        {
+            seEstaNoChao = false;
+        }
     }
 
     private void Caminhar()
@@ -80,6 +87,12 @@ public class JogadorMoviment : MonoBehaviour
         if (rigidbody2D == true && seEstaNoChao == true)
         {
             rigidbody2D.AddForceY(forcaDoPulo, ForceMode2D.Impulse);
+            
+            // Tocar som.
+            if (somAoPular == true)
+            {
+                somAoPular.PlayOneShot(somAoPular.clip);
+            }
         }
     }
 

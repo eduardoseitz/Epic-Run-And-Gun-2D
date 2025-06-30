@@ -8,6 +8,7 @@ public class InimigoAtirar : MonoBehaviour
     public SpriteRenderer spriteRenderer;
     public int chanceDeAtirar = 15;
     public float atirarACadaSegundos = 1f;
+    public AudioSource somAoAtirar;
     [HideInInspector] public InimigoMovimento inimigoMovimento;
     
     // Este metódo é chamado pela Unity no incio do jogo.
@@ -29,6 +30,12 @@ public class InimigoAtirar : MonoBehaviour
                 else
                 {
                     Instantiate(projetilPrefab, posicaoArma.transform.position, Quaternion.identity);
+                }
+                
+                // Tocar som.
+                if (somAoAtirar == true)
+                {
+                    somAoAtirar.PlayOneShot(somAoAtirar.clip);
                 }
             }
         }
