@@ -60,6 +60,12 @@ public class JogadorVida : MonoBehaviour
         
         Debug.Log("Vidas restantes para o " + gameObject.name + ": " + vidas);
         
+        // Animar.
+        if (animador == true)
+        {
+            animador.Play("TomarDano");
+        }
+        
         if (vidas == 0)
         {
             Morrer();
@@ -73,12 +79,6 @@ public class JogadorVida : MonoBehaviour
         {
             // Tocar som.
             somAoLevarDano.PlayOneShot(somAoLevarDano.clip);
-            
-            // Animar.
-            if (animador == true)
-            {
-                animador.Play("TomarDano");
-            }
         }
     }
 
