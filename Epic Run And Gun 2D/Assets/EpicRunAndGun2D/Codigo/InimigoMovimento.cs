@@ -14,6 +14,7 @@ public class InimigoMovimento : MonoBehaviour
     [HideInInspector] public bool estaAgressivo;
     [HideInInspector] public bool olhandoPraEsquerda;
     public AudioSource somAoPular;
+    public Animator animador;
 
     // Variaveis privadas.
     private bool seEstaNoChao = true;
@@ -44,11 +45,23 @@ public class InimigoMovimento : MonoBehaviour
 
                 Abaixar();
                 OlharParaJogador();
+                
+                // Animar.
+                if (animador && estaSeAbaixando == false)
+                {
+                    animador.SetBool("Caminhando", false);
+                }
             }
             else if (estaAgressivo == false)
             {
                 Caminhar();
                 OlharParaCaminho();
+                
+                // Animar.
+                if (animador && estaSeAbaixando == false)
+                {
+                    animador.SetBool("Caminhando", true);
+                }
             }
         }
     }
@@ -58,6 +71,12 @@ public class InimigoMovimento : MonoBehaviour
         if (outroObjeto.gameObject.tag == "Untagged")
         {
             seEstaNoChao = true;
+            
+            // Animar.
+            if (animador)
+            {
+                animador.SetBool("Pulando", false);
+            }
         }
     }
 
@@ -140,6 +159,12 @@ public class InimigoMovimento : MonoBehaviour
                 if (somAoPular == true)
                 {
                     somAoPular.PlayOneShot(somAoPular.clip);
+                }
+                
+                // Animar.
+                if (animador)
+                {
+                    animador.SetBool("Pulando", true);
                 }
             }
         }

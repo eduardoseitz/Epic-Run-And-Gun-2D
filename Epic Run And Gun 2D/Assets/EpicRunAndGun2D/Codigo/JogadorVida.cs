@@ -10,6 +10,7 @@ public class JogadorVida : MonoBehaviour
     public Image imagemBarraDeVida;
     public AudioSource somAoLevarDano;
     public AudioSource somAoGanharVida;
+    public Animator animador;
     
     // Variaveis privadas.
     private int totalDeVidas;
@@ -63,14 +64,21 @@ public class JogadorVida : MonoBehaviour
         {
             Morrer();
         }
-        // Tocar som.
         else if (somAoGanharVida == true && Math.Sign(dano) > 0)
         {
+            // Tocar som.
             somAoGanharVida.PlayOneShot(somAoGanharVida.clip);
         }
         else if (somAoLevarDano == true && Math.Sign(dano) < 0)
         {
+            // Tocar som.
             somAoLevarDano.PlayOneShot(somAoLevarDano.clip);
+            
+            // Animar.
+            if (animador)
+            {
+                animador.Play("TomarDano");
+            }
         }
     }
 

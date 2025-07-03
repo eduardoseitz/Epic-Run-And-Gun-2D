@@ -6,6 +6,7 @@ public class InimigoVida : MonoBehaviour
     // Variaveis publicas.
     public int vidas = 3;
     public AudioSource somAoLevarDano;
+    public Animator animador;
 
     private void OnCollisionEnter2D(Collision2D outroObjeto)
     {
@@ -30,6 +31,12 @@ public class InimigoVida : MonoBehaviour
         if (somAoLevarDano == true)
         {
             somAoLevarDano.PlayOneShot(somAoLevarDano.clip);
+        }
+        
+        // Animar.
+        if (animador)
+        {
+            animador.Play("TomarDano");
         }
         
         if (vidas <= 0)

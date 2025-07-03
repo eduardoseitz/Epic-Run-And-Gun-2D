@@ -7,6 +7,7 @@ public class JogadorMoviment : MonoBehaviour
     public float forcaDoPulo = 8f;
     public Rigidbody2D rigidbody2D;
     public AudioSource somAoPular;
+    public Animator animador;
     [HideInInspector] public bool estaOlhandoParaEsquerda;
     
     // Variaveis privadas.
@@ -47,6 +48,12 @@ public class JogadorMoviment : MonoBehaviour
         if (outroObjeto.gameObject.tag == "Untagged")
         {
             seEstaNoChao = true;
+            
+            // Animar.
+            if (animador)
+            {
+                animador.SetBool("Pulando", false);
+            }
         }
     }
 
@@ -64,6 +71,12 @@ public class JogadorMoviment : MonoBehaviour
         {
             transform.Translate(new Vector2(controleHorizontal * velocidadeAoCaminhar * Time.deltaTime, 0));
 
+            // Animar.
+            if (animador)
+            {
+                animador.SetBool("Caminhando", (controleHorizontal != 0));
+            }
+            
             OlharDirecao();
         }
     }
@@ -92,6 +105,12 @@ public class JogadorMoviment : MonoBehaviour
             if (somAoPular == true)
             {
                 somAoPular.PlayOneShot(somAoPular.clip);
+            }
+            
+            // Animar.
+            if (animador)
+            {
+                animador.SetBool("Pulando", true);
             }
         }
     }

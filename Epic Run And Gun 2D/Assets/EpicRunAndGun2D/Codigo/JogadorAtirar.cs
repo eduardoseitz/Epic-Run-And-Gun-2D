@@ -7,6 +7,7 @@ public class ogadorAtirar : MonoBehaviour
     public Transform posicaoArma;
     public JogadorMoviment jogadorMovimento;
     public AudioSource somAoAtirar;
+    public Animator animator;
     
     // Este metódo é chamado pela Unity no incio de cada quadro/frame.
     private void Update()
