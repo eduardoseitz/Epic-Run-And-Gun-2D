@@ -7,7 +7,6 @@ public class ogadorAtirar : MonoBehaviour
     public Transform posicaoArma;
     public JogadorMoviment jogadorMovimento;
     public AudioSource somAoAtirar;
-    public Animator animator;
     
     // Este metódo é chamado pela Unity no incio de cada quadro/frame.
     private void Update()
@@ -20,19 +19,22 @@ public class ogadorAtirar : MonoBehaviour
 
     private void Atirar()
     {
-        if (jogadorMovimento.estaOlhandoParaEsquerda)
+        if (projetilPrefab == true && posicaoArma == true && jogadorMovimento == true)
         {
-            Instantiate(projetilPrefab, posicaoArma.transform.position, new Quaternion(0, 180, 0, 0));
-        }
-        else
-        {
-            Instantiate(projetilPrefab, posicaoArma.transform.position, Quaternion.identity);
-        }
-        
-        // Tocar som.
-        if (somAoAtirar == true)
-        {
-            somAoAtirar.PlayOneShot(somAoAtirar.clip);
+            if (jogadorMovimento.estaOlhandoParaEsquerda)
+            {
+                Instantiate(projetilPrefab, posicaoArma.transform.position, new Quaternion(0, 180, 0, 0));
+            }
+            else
+            {
+                Instantiate(projetilPrefab, posicaoArma.transform.position, Quaternion.identity);
+            }
+
+            // Tocar som.
+            if (somAoAtirar == true)
+            {
+                somAoAtirar.PlayOneShot(somAoAtirar.clip);
+            }
         }
     }
 }

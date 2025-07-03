@@ -75,7 +75,7 @@ public class JogadorVida : MonoBehaviour
             somAoLevarDano.PlayOneShot(somAoLevarDano.clip);
             
             // Animar.
-            if (animador)
+            if (animador == true)
             {
                 animador.Play("TomarDano");
             }

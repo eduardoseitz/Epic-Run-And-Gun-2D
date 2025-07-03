@@ -6,6 +6,6 @@ public class NaoDestruirAoCarregarCena : MonoBehaviour
     private void Start()
     {
         transform.SetParent(null);
-        DontDestroyOnLoad(this.gameObject);
+        DontDestroyOnLoad(gameObject);
     }
 }

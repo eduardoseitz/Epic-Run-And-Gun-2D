@@ -47,7 +47,7 @@ public class InimigoMovimento : MonoBehaviour
                 OlharParaJogador();
                 
                 // Animar.
-                if (animador && estaSeAbaixando == false)
+                if (animador == true && estaSeAbaixando == false)
                 {
                     animador.SetBool("Caminhando", false);
                 }
@@ -58,7 +58,7 @@ public class InimigoMovimento : MonoBehaviour
                 OlharParaCaminho();
                 
                 // Animar.
-                if (animador && estaSeAbaixando == false)
+                if (animador == true && estaSeAbaixando == false)
                 {
                     animador.SetBool("Caminhando", true);
                 }
@@ -73,7 +73,7 @@ public class InimigoMovimento : MonoBehaviour
             seEstaNoChao = true;
             
             // Animar.
-            if (animador)
+            if (animador == true)
             {
                 animador.SetBool("Pulando", false);
             }
@@ -162,7 +162,7 @@ public class InimigoMovimento : MonoBehaviour
                 }
                 
                 // Animar.
-                if (animador)
+                if (animador == true)
                 {
                     animador.SetBool("Pulando", true);
                 }

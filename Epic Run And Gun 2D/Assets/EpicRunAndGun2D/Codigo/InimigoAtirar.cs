@@ -5,11 +5,10 @@ public class InimigoAtirar : MonoBehaviour
     // Variaveis publicas.
     public GameObject projetilPrefab;
     public Transform posicaoArma;
-    public SpriteRenderer spriteRenderer;
     public int chanceDeAtirar = 15;
     public float atirarACadaSegundos = 1f;
     public AudioSource somAoAtirar;
-    [HideInInspector] public InimigoMovimento inimigoMovimento;
+    public InimigoMovimento inimigoMovimento;
     
     // Este metódo é chamado pela Unity no incio do jogo.
     public void Start()
@@ -19,23 +18,32 @@ public class InimigoAtirar : MonoBehaviour
     
     private void Atirar()
     {
-        if (inimigoMovimento.estaAgressivo)
+        if (inimigoMovimento == true)
         {
-            if (Random.Range(1, 100) <= chanceDeAtirar)
+            if (inimigoMovimento.estaAgressivo)
             {
-                if (inimigoMovimento.olhandoPraEsquerda)
+                if (Random.Range(1, 100) <= chanceDeAtirar)
                 {
-                    Instantiate(projetilPrefab, posicaoArma.transform.position, new Quaternion(0, 180, 0, 0));
-                }
-                else
-                {
-                    Instantiate(projetilPrefab, posicaoArma.transform.position, Quaternion.identity);
-                }
-                
-                // Tocar som.
-                if (somAoAtirar == true)
-                {
-                    somAoAtirar.PlayOneShot(somAoAtirar.clip);
+                    if (inimigoMovimento.olhandoPraEsquerda)
+                    {
+                        if (projetilPrefab == true && posicaoArma == true)
+                        {
+                            Instantiate(projetilPrefab, posicaoArma.transform.position, new Quaternion(0, 180, 0, 0));
+                        }
+                    }
+                    else
+                    {
+                        if (projetilPrefab == true && posicaoArma == true)
+                        {
+                            Instantiate(projetilPrefab, posicaoArma.transform.position, Quaternion.identity);
+                        }
+                    }
+
+                    // Tocar som.
+                    if (somAoAtirar == true)
+                    {
+                        somAoAtirar.PlayOneShot(somAoAtirar.clip);
+                    }
                 }
             }
         }

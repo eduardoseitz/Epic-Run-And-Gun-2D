@@ -3,6 +3,7 @@ using UnityEngine.SceneManagement;
 
 public class GerenciadorDeCena : MonoBehaviour
 {
+    // Este metódo é chamado pela Unity no incio de cada quadro/frame.
     private void Update()
     {
         if (SceneManager.GetActiveScene().buildIndex != 0)

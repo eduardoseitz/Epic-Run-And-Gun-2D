@@ -1,4 +1,3 @@
-
 using UnityEngine;
 
 public class InimigoVida : MonoBehaviour
@@ -34,7 +33,7 @@ public class InimigoVida : MonoBehaviour
         }
         
         // Animar.
-        if (animador)
+        if (animador == true)
         {
             animador.Play("TomarDano");
         }

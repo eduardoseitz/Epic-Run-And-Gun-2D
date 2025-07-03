@@ -50,7 +50,7 @@ public class JogadorMoviment : MonoBehaviour
             seEstaNoChao = true;
             
             // Animar.
-            if (animador)
+            if (animador == true)
             {
                 animador.SetBool("Pulando", false);
             }
@@ -108,7 +108,7 @@ public class JogadorMoviment : MonoBehaviour
             }
             
             // Animar.
-            if (animador)
+            if (animador == true)
             {
                 animador.SetBool("Pulando", true);
             }
