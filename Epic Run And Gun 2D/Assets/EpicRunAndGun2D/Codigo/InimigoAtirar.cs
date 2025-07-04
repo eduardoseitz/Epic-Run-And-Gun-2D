@@ -13,6 +13,7 @@ public class InimigoAtirar : MonoBehaviour
     // Este metódo é chamado pela Unity no incio do jogo.
     public void Start()
     {
+        // Repita a função atirar a cada x segundos.
         InvokeRepeating(nameof(Atirar), atirarACadaSegundos, atirarACadaSegundos);
     }
     
@@ -22,12 +23,14 @@ public class InimigoAtirar : MonoBehaviour
         {
             if (inimigoMovimento.estaAgressivo)
             {
+                // Sorteie um numero de 1 a 100 e compare se é menor que a chance de atirar.
                 if (Random.Range(1, 100) <= chanceDeAtirar)
                 {
                     if (inimigoMovimento.olhandoPraEsquerda)
                     {
                         if (projetilPrefab == true && posicaoArma == true)
                         {
+                            // Spawne um objeto novo na posição onde seria a arma.
                             Instantiate(projetilPrefab, posicaoArma.transform.position, new Quaternion(0, 180, 0, 0));
                         }
                     }
@@ -35,6 +38,7 @@ public class InimigoAtirar : MonoBehaviour
                     {
                         if (projetilPrefab == true && posicaoArma == true)
                         {
+                            // Spawne um objeto novo na posição onde seria a arma.
                             Instantiate(projetilPrefab, posicaoArma.transform.position, Quaternion.identity);
                         }
                     }

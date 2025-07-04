@@ -30,7 +30,8 @@ public class InimigoMovimento : MonoBehaviour
         escalaOriginal = transform.localScale;
         posicaoInicial = transform.position;
         posicaoFinal = new Vector2(posicaoInicial.x + moverX, posicaoInicial.y);
-        
+
+        // Repita a função pular a cada x segundos.
         InvokeRepeating(nameof(Pular), 1f, 1f);
     }
     
@@ -39,10 +40,11 @@ public class InimigoMovimento : MonoBehaviour
     {
         if (player)
         {
+            // Se o player estiver perto o suficiente.
             if (Vector2.Distance(transform.position, player.position) < distanciaParaFicarAgressivo)
             {
+                // O inimigo fica agressivo.
                 estaAgressivo = true;
-
                 Abaixar();
                 OlharParaJogador();
                 
@@ -52,8 +54,10 @@ public class InimigoMovimento : MonoBehaviour
                     animador.SetBool("Caminhando", false);
                 }
             }
+            // Se o player estiver longe.
             else if (estaAgressivo == false)
             {
+                // O inimigo caminha normalmente.
                 Caminhar();
                 OlharParaCaminho();
                 
@@ -65,9 +69,11 @@ public class InimigoMovimento : MonoBehaviour
             }
         }
     }
-    
+
+    // Ao colidir com outro objeto 2D.
     private void OnTriggerEnter2D(Collider2D outroObjeto)
     {
+        // Verifica se está tocando no chao.
         if (outroObjeto.gameObject.tag == "Untagged")
         {
             seEstaNoChao = true;
@@ -80,8 +86,10 @@ public class InimigoMovimento : MonoBehaviour
         }
     }
 
+    // Ao parar de colidir com outro objeto 2D.
     private void OnTriggerExit2D(Collider2D outroObjeto)
     {
+        // Verifica se está no ar.
         if (outroObjeto.gameObject.tag == "Untagged")
         {
             seEstaNoChao = false;
@@ -94,8 +102,10 @@ public class InimigoMovimento : MonoBehaviour
         {
             if (estaIndoProFinal == true)
             {
+                // Se estiver em direção ao ponto final.
                 if (Mathf.Abs(transform.position.x - posicaoFinal.x) > 0.1f)
                 {
+                    // Mova para o ponto final.
                     transform.Translate(new Vector2(Mathf.Abs(velocidadeCaminhar) * Mathf.Sign(moverX) * Time.deltaTime, 0));
                 }
                 else
@@ -103,10 +113,12 @@ public class InimigoMovimento : MonoBehaviour
                     estaIndoProFinal = false;
                 }
             }
+            // Se estiver em direção ao ponto inicial.
             else
             {
                 if (Mathf.Abs(transform.position.x - posicaoInicial.x) > 0.1f)
                 {
+                    // Mova para o ponto inicial.
                     transform.Translate(new Vector2(Mathf.Abs(velocidadeCaminhar) * -Mathf.Sign(moverX) * Time.deltaTime, 0));
                 }
                 else
@@ -119,6 +131,7 @@ public class InimigoMovimento : MonoBehaviour
     
     private void OlharParaCaminho()
     {
+        // Verifica se deve ficar voltado para a esquerda ou para a direita.
         if ((estaIndoProFinal == true && Mathf.Sign(moverX) >= 0) || estaIndoProFinal == false && Mathf.Sign(moverX) < 0)
         {
             transform.localScale = new Vector2(escalaOriginal.x, transform.localScale.y);
@@ -133,6 +146,7 @@ public class InimigoMovimento : MonoBehaviour
     
     private void OlharParaJogador()
     {
+        // Verifica se deve ficar voltado para a esquerda ou para a direita.
         if (player.position.x < transform.position.x && olhandoPraEsquerda == false)
         {
             transform.localScale = new Vector2(-escalaOriginal.x, transform.localScale.y);
@@ -147,12 +161,16 @@ public class InimigoMovimento : MonoBehaviour
     
     private void Pular()
     {
+        // Sorteie um numero de 1 a 100 e compare se é menor que a chance de pular. 
         if (Random.Range(1, 100) <= chanceDePular)
         {
+            // Se estiver abaixado levante.
             Levantar();
             
+            // Se estiver no chão.
             if (rigidbody2D == true && seEstaNoChao == true)
             {
+                // Adicione força de impulso para cima.
                 rigidbody2D.AddForceY(forcaPulo, ForceMode2D.Impulse);
                 
                 // Tocar som.
@@ -172,12 +190,15 @@ public class InimigoMovimento : MonoBehaviour
 
     private void Abaixar()
     {
+        // Sorteie um numero de 1 a 100 e compare se é menor que a chance de abaixar.
         if (Random.Range(1, 100) <= chanceDeAbaixar)
         {
             if (seEstaNoChao == true && estaSeAbaixando == false)
             {
-                transform.localScale = new Vector2(transform.localScale.x, escalaOriginal.y / 2);
                 estaSeAbaixando = true;
+
+                // Corta a altura do objeto pela metade para parecer que está abaixado.
+                transform.localScale = new Vector2(transform.localScale.x, escalaOriginal.y / 2);
             }
         }
     }
@@ -186,8 +207,10 @@ public class InimigoMovimento : MonoBehaviour
     {
         if (estaSeAbaixando == true)
         {
-            transform.localScale = new Vector2(transform.localScale.x, escalaOriginal.y);
             estaSeAbaixando = false;
+
+            // Volta a altura do objeto ao normal para parecer que está de pé.
+            transform.localScale = new Vector2(transform.localScale.x, escalaOriginal.y);
         }
     }
 }

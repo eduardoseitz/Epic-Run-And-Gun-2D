@@ -7,8 +7,10 @@ public class InimigoVida : MonoBehaviour
     public AudioSource somAoLevarDano;
     public Animator animador;
 
+    // Ao colidir com outro objeto 2D.
     private void OnCollisionEnter2D(Collision2D outroObjeto)
     {
+        // Checar o tipo de etiqueta no outro objeto.
         switch (outroObjeto.gameObject.tag)
         {
             case "Projetil":
@@ -22,8 +24,10 @@ public class InimigoVida : MonoBehaviour
 
     private void TomarDano()
     {
+        // Diminui as vidas atuais.
         vidas = vidas - 1;
 
+        // Printa no console.
         Debug.Log("Vidas restantes para o " + gameObject.name + ": " + vidas);
         
         // Tocar som.
@@ -38,6 +42,7 @@ public class InimigoVida : MonoBehaviour
             animador.Play("TomarDano");
         }
         
+        // Se as vidas chegarem a zero morra.
         if (vidas <= 0)
         {
             Morrer();
@@ -46,8 +51,10 @@ public class InimigoVida : MonoBehaviour
 
     private void Morrer()
     {
+        // Printa no console.
         Debug.Log(gameObject.name + " morreu!");
         
+        // Destroi o objeto com esse codigo de cena.
         Destroy(gameObject);
     }
 }

@@ -11,6 +11,7 @@ public class ogadorAtirar : MonoBehaviour
     // Este metódo é chamado pela Unity no incio de cada quadro/frame.
     private void Update()
     {
+        // Ao precionar o botão de atirar.
         if (Input.GetButtonDown("Atirar"))
         {
             Atirar();
@@ -21,12 +22,15 @@ public class ogadorAtirar : MonoBehaviour
     {
         if (projetilPrefab == true && posicaoArma == true && jogadorMovimento == true)
         {
+            // Verifique o lado que o jogador está olhando.
             if (jogadorMovimento.estaOlhandoParaEsquerda)
             {
+                // Spawne um objeto novo na posição onde seria a arma.
                 Instantiate(projetilPrefab, posicaoArma.transform.position, new Quaternion(0, 180, 0, 0));
             }
             else
             {
+                // Spawne um objeto novo na posição onde seria a arma.
                 Instantiate(projetilPrefab, posicaoArma.transform.position, Quaternion.identity);
             }
 

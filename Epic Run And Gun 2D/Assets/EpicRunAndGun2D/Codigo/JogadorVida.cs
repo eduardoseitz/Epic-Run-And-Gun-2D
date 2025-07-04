@@ -22,8 +22,10 @@ public class JogadorVida : MonoBehaviour
         AtualizarBarraDeVida();
     }
 
+    // Ao colidir com outro objeto 2D.
     private void OnCollisionEnter2D(Collision2D outroObjeto)
     {
+        // Checar o tipo de etiqueta no outro objeto.
         switch (outroObjeto.gameObject.tag)
         {
             case "Projetil":
@@ -38,6 +40,7 @@ public class JogadorVida : MonoBehaviour
         }
     }
 
+    // Ao colidir com outro objeto 2D do tipo trigger.
     private void OnTriggerEnter2D(Collider2D outroObjeto)
     {
         switch (outroObjeto.gameObject.tag)
@@ -55,9 +58,13 @@ public class JogadorVida : MonoBehaviour
 
     private void MudarVida(int dano)
     {
+        // Atualize as vidas atuais.
         vidas = Math.Clamp(vidas + dano, 0, totalDeVidas);
+
+        // Atualize a vida na tela.
         AtualizarBarraDeVida();
         
+        // Printa no console.
         Debug.Log("Vidas restantes para o " + gameObject.name + ": " + vidas);
         
         // Animar.
@@ -65,16 +72,19 @@ public class JogadorVida : MonoBehaviour
         {
             animador.Play("TomarDano");
         }
-        
+
+        // Se as vidas chegarem a zero morra.
         if (vidas == 0)
         {
             Morrer();
         }
+        // Se ganhou vida.
         else if (somAoGanharVida == true && Math.Sign(dano) > 0)
         {
             // Tocar som.
             somAoGanharVida.PlayOneShot(somAoGanharVida.clip);
         }
+        // Se perdeu vida.
         else if (somAoLevarDano == true && Math.Sign(dano) < 0)
         {
             // Tocar som.

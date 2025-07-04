@@ -6,12 +6,15 @@ public class GerenciadorDeCena : MonoBehaviour
     // Este metódo é chamado pela Unity no incio de cada quadro/frame.
     private void Update()
     {
+        // Se não estiver no menu.
         if (SceneManager.GetActiveScene().buildIndex != 0)
         {
+            // Ao apertar M.
             if (Input.GetKeyDown(KeyCode.M))
             {
                 CarregarCena(0);
             }
+            // Ao apertar R.
             else if (Input.GetKeyDown(KeyCode.R))
             {
                 ReiniciarCena();

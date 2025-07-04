@@ -25,6 +25,7 @@ public class JogadorMoviment : MonoBehaviour
     // Este metódo é chamado pela Unity no incio de cada quadro/frame.
     private void Update()
     {
+        // Pegue o input esquerda, direita ou a, d
         controleHorizontal = Input.GetAxis("Horizontal");
         Caminhar();
         
@@ -43,6 +44,7 @@ public class JogadorMoviment : MonoBehaviour
         }
     }
 
+    // Ao colidir com outro objeto 2D.
     private void OnTriggerEnter2D(Collider2D outroObjeto)
     {
         if (outroObjeto.gameObject.tag == "Untagged")
@@ -57,6 +59,7 @@ public class JogadorMoviment : MonoBehaviour
         }
     }
 
+    // Ao parar de colidir com outro objeto 2D.
     private void OnTriggerExit2D(Collider2D outroObjeto)
     {
         if (outroObjeto.gameObject.tag == "Untagged")
@@ -69,6 +72,7 @@ public class JogadorMoviment : MonoBehaviour
     {
         if (estaSeAbaixando == false)
         {
+            // Move na direção correta.
             transform.Translate(new Vector2(controleHorizontal * velocidadeAoCaminhar * Time.deltaTime, 0));
 
             // Animar.
@@ -83,11 +87,13 @@ public class JogadorMoviment : MonoBehaviour
     
     private void OlharDirecao()
     {
+        // Caso olhando para esquerda.
         if (controleHorizontal < -0.1f && estaOlhandoParaEsquerda == false)
         {
             transform.localScale = new Vector2(-escalaOriginal.x, transform.localScale.y);
             estaOlhandoParaEsquerda = true;
         }
+        // Caso olhando para direita.
         else if (controleHorizontal > 0.1f && estaOlhandoParaEsquerda == true)
         {
             transform.localScale = new Vector2(escalaOriginal.x, transform.localScale.y);
@@ -99,6 +105,7 @@ public class JogadorMoviment : MonoBehaviour
     {
         if (rigidbody2D == true && seEstaNoChao == true)
         {
+            // Adicione força de impulso para cima.
             rigidbody2D.AddForceY(forcaDoPulo, ForceMode2D.Impulse);
             
             // Tocar som.
@@ -119,8 +126,10 @@ public class JogadorMoviment : MonoBehaviour
     {
         if (seEstaNoChao == true && estaSeAbaixando == false)
         {
-            transform.localScale = new Vector2(transform.localScale.x, escalaOriginal.y / 2);
             estaSeAbaixando = true;
+
+            // Corta a altura do objeto pela metade para parecer que está abaixado.
+            transform.localScale = new Vector2(transform.localScale.x, escalaOriginal.y / 2);
         }
     }
     
@@ -128,8 +137,10 @@ public class JogadorMoviment : MonoBehaviour
     {
         if (estaSeAbaixando == true)
         {
-            transform.localScale = new Vector2(transform.localScale.x, escalaOriginal.y);
             estaSeAbaixando = false;
+
+            // Volta a altura do objeto ao normal para parecer que está de pé.
+            transform.localScale = new Vector2(transform.localScale.x, escalaOriginal.y);
         }
     }
 }
