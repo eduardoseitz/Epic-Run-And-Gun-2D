@@ -6,15 +6,18 @@ public class JogadorMoviment : MonoBehaviour
     public float velocidadeAoCaminhar = 8f;
     public float forcaDoPulo = 8f;
     public Rigidbody2D rigidbody2D;
+    public int numeroMaximoDePulosSeguidos = 2;
     public AudioSource somAoPular;
     public Animator animador;
     [HideInInspector] public bool estaOlhandoParaEsquerda;
     
     // Variaveis privadas.
     private float controleHorizontal;
+    private float controleVertical;
     private bool seEstaNoChao = true;
     private Vector2 escalaOriginal;
     private bool estaSeAbaixando = false;
+    private int numeroDePulos = 0;
 
     // Este metódo é chamado pela Unity no incio do jogo.
     public void Start()
@@ -25,22 +28,21 @@ public class JogadorMoviment : MonoBehaviour
     // Este metódo é chamado pela Unity no incio de cada quadro/frame.
     private void Update()
     {
+        // Pegue o input s ou baixo
+        controleVertical = Input.GetAxis("Vertical");
+        if (controleVertical < 0)
+            Abaixar();
+        else
+            Levantar();
+
         // Pegue o input esquerda, direita ou a, d
         controleHorizontal = Input.GetAxis("Horizontal");
         Caminhar();
-        
-        if(Input.GetButtonDown("Pular"))
+
+        // Pegue o input w ou cima
+        if (Input.GetButtonDown("Pular"))
         {
             Pular();
-        }
-        
-        if(Input.GetButtonDown("Abaixar"))
-        {
-            Abaixar();
-        }
-        else if(Input.GetButtonUp("Abaixar"))
-        {
-            Levantar();
         }
     }
 
@@ -50,6 +52,7 @@ public class JogadorMoviment : MonoBehaviour
         if (outroObjeto.gameObject.tag == "Untagged")
         {
             seEstaNoChao = true;
+            numeroDePulos = 0;
             
             // Animar.
             if (animador == true)
@@ -103,7 +106,7 @@ public class JogadorMoviment : MonoBehaviour
 
     private void Pular()
     {
-        if (rigidbody2D == true && seEstaNoChao == true)
+        if (rigidbody2D == true && numeroDePulos < numeroMaximoDePulosSeguidos)
         {
             // Adicione força de impulso para cima.
             rigidbody2D.AddForceY(forcaDoPulo, ForceMode2D.Impulse);
@@ -119,6 +122,8 @@ public class JogadorMoviment : MonoBehaviour
             {
                 animador.SetBool("Pulando", true);
             }
+
+            numeroDePulos = numeroDePulos + 1;
         }
     }
 
@@ -129,7 +134,13 @@ public class JogadorMoviment : MonoBehaviour
             estaSeAbaixando = true;
 
             // Corta a altura do objeto pela metade para parecer que está abaixado.
-            transform.localScale = new Vector2(transform.localScale.x, escalaOriginal.y / 2);
+            //transform.localScale = new Vector2(transform.localScale.x, escalaOriginal.y / 2);
+        }
+
+        // Animar.
+        if (animador == true)
+        {
+            animador.SetBool("Abaixando", true);
         }
     }
     
@@ -140,7 +151,13 @@ public class JogadorMoviment : MonoBehaviour
             estaSeAbaixando = false;
 
             // Volta a altura do objeto ao normal para parecer que está de pé.
-            transform.localScale = new Vector2(transform.localScale.x, escalaOriginal.y);
+            //transform.localScale = new Vector2(transform.localScale.x, escalaOriginal.y);
+        }
+
+        // Animar.
+        if (animador == true)
+        {
+            animador.SetBool("Abaixando", false);
         }
     }
 }

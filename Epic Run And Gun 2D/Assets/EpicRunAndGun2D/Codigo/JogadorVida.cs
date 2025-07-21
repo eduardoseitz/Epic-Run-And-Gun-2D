@@ -68,7 +68,7 @@ public class JogadorVida : MonoBehaviour
         Debug.Log("Vidas restantes para o " + gameObject.name + ": " + vidas);
         
         // Animar.
-        if (animador == true)
+        if (animador == true && Math.Sign(dano) < 0)
         {
             animador.Play("TomarDano");
         }
@@ -106,7 +106,7 @@ public class JogadorVida : MonoBehaviour
         
         if (gerenciadorDeJogo == true)
         {
-            gerenciadorDeJogo.PerderJogo();
+            gerenciadorDeJogo.Invoke(nameof(gerenciadorDeJogo.PerderJogo), 0.5f);
         }
         
         gameObject.SetActive(false);
@@ -118,7 +118,7 @@ public class JogadorVida : MonoBehaviour
         
         if (gerenciadorDeJogo == true)
         {
-            gerenciadorDeJogo.GanharJogo();
+            gerenciadorDeJogo.Invoke(nameof(gerenciadorDeJogo.GanharJogo), 0.5f);
         }
     }
 }
