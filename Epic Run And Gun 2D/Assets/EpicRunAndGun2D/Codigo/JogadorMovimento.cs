@@ -142,6 +142,7 @@ public class JogadorMoviment : MonoBehaviour
         {
             animador.SetBool("Abaixando", true);
         }
+        else transform.localScale = new Vector3(escalaOriginal.x, escalaOriginal.y / 2, 1);
     }
     
     private void Levantar()
@@ -159,5 +160,6 @@ public class JogadorMoviment : MonoBehaviour
         {
             animador.SetBool("Abaixando", false);
         }
+        else transform.localScale = new Vector3(escalaOriginal.x, escalaOriginal.y, 1);
     }
 }
