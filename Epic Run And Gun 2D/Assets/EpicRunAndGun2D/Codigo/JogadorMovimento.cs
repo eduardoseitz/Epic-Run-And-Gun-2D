@@ -29,14 +29,14 @@ public class JogadorMoviment : MonoBehaviour
     private void Update()
     {
         // Pegue o input s ou baixo
-        controleVertical = Input.GetAxis("Vertical");
+        controleVertical = Input.GetAxisRaw("Vertical");
         if (controleVertical < 0)
             Abaixar();
         else
             Levantar();
 
         // Pegue o input esquerda, direita ou a, d
-        controleHorizontal = Input.GetAxis("Horizontal");
+        controleHorizontal = Input.GetAxisRaw("Horizontal");
         Caminhar();
 
         // Pegue o input w ou cima
@@ -91,13 +91,13 @@ public class JogadorMoviment : MonoBehaviour
     private void OlharDirecao()
     {
         // Caso olhando para esquerda.
-        if (controleHorizontal < -0.1f && estaOlhandoParaEsquerda == false)
+        if (controleHorizontal < -0.1f)
         {
             transform.localScale = new Vector2(-escalaOriginal.x, transform.localScale.y);
             estaOlhandoParaEsquerda = true;
         }
         // Caso olhando para direita.
-        else if (controleHorizontal > 0.1f && estaOlhandoParaEsquerda == true)
+        else if (controleHorizontal > 0.1f)
         {
             transform.localScale = new Vector2(escalaOriginal.x, transform.localScale.y);
             estaOlhandoParaEsquerda = false;
