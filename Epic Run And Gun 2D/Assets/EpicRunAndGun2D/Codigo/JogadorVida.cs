@@ -28,7 +28,7 @@ public class JogadorVida : MonoBehaviour
         // Checar o tipo de etiqueta no outro objeto.
         switch (outroObjeto.gameObject.tag)
         {
-            case "Projetil":
+            case "Projetil Inimigo":
                 MudarVida(-1);
                 break;
             case "Inimigo":

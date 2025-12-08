@@ -92,15 +92,22 @@ public class JogadorMoviment : MonoBehaviour
     {
         // Caso olhando para esquerda.
         if (controleHorizontal < -0.1f)
-        {
-            transform.localScale = new Vector2(-escalaOriginal.x, transform.localScale.y);
+        {   
             estaOlhandoParaEsquerda = true;
         }
         // Caso olhando para direita.
         else if (controleHorizontal > 0.1f)
         {
-            transform.localScale = new Vector2(escalaOriginal.x, transform.localScale.y);
             estaOlhandoParaEsquerda = false;
+        }
+        
+        if (estaOlhandoParaEsquerda)
+        {
+            transform.localScale = new Vector2(-escalaOriginal.x, transform.localScale.y);
+        }
+        else
+        {
+            transform.localScale = new Vector2(escalaOriginal.x, transform.localScale.y);
         }
     }
 
@@ -134,7 +141,7 @@ public class JogadorMoviment : MonoBehaviour
             estaSeAbaixando = true;
 
             // Corta a altura do objeto pela metade para parecer que está abaixado.
-            //transform.localScale = new Vector2(transform.localScale.x, escalaOriginal.y / 2);
+            transform.localScale = new Vector2(transform.localScale.x, escalaOriginal.y / 2);
         }
 
         // Animar.
@@ -142,7 +149,7 @@ public class JogadorMoviment : MonoBehaviour
         {
             animador.SetBool("Abaixando", true);
         }
-        else transform.localScale = new Vector3(escalaOriginal.x, escalaOriginal.y / 2, 1);
+        else transform.localScale = new Vector3(transform.localScale.x, escalaOriginal.y / 2, 1);
     }
     
     private void Levantar()
@@ -152,7 +159,7 @@ public class JogadorMoviment : MonoBehaviour
             estaSeAbaixando = false;
 
             // Volta a altura do objeto ao normal para parecer que está de pé.
-            //transform.localScale = new Vector2(transform.localScale.x, escalaOriginal.y);
+            transform.localScale = new Vector2(transform.localScale.x, escalaOriginal.y);
         }
 
         // Animar.
@@ -160,6 +167,6 @@ public class JogadorMoviment : MonoBehaviour
         {
             animador.SetBool("Abaixando", false);
         }
-        else transform.localScale = new Vector3(escalaOriginal.x, escalaOriginal.y, 1);
+        else transform.localScale = new Vector3(transform.localScale.x, escalaOriginal.y, 1);
     }
 }

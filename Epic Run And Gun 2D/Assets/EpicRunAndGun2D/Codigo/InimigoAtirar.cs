@@ -5,8 +5,8 @@ public class InimigoAtirar : MonoBehaviour
     // Variaveis publicas.
     public GameObject projetilPrefab;
     public Transform posicaoArma;
-    public int chanceDeAtirar = 15;
-    public float atirarACadaSegundos = 1f;
+    public int chanceDeAtirar = 30;
+    public float atirarACadaSegundos = 0.5f;
     public AudioSource somAoAtirar;
     public InimigoMovimento inimigoMovimento;
     

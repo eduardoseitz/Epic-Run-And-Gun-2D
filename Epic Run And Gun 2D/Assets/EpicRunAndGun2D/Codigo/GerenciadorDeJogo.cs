@@ -10,6 +10,8 @@ public class GerenciadorDeJogo : MonoBehaviour
     public AudioSource somAoPerderJogo;
     public GameObject painelJogoPausado;
 
+    [HideInInspector] public bool jogoEstaPausado;
+    
     // Este metódo é chamado pela Unity no incio do jogo.
     private void Start()
     {
@@ -25,15 +27,15 @@ public class GerenciadorDeJogo : MonoBehaviour
             // Ao apertar P.
             if (Input.GetKeyDown(KeyCode.P))
             {
-                if (Time.timeScale == 1)
-                {
-                    // Pausa o jogo.
-                    PausarJogo();
-                }
-                else
+                if (jogoEstaPausado)
                 {
                     // Despausa o jogo.
                     ContinuarJogo();
+                }
+                else
+                {
+                    // Pausa o jogo.
+                    PausarJogo();
                 }
             }
         }
@@ -43,6 +45,7 @@ public class GerenciadorDeJogo : MonoBehaviour
     public void PausarJogo()
     {
         // Pausa o tempo e a física.
+        jogoEstaPausado = true;
         Time.timeScale = 0;
 
         // Mostra a tela de pausado.
@@ -56,6 +59,7 @@ public class GerenciadorDeJogo : MonoBehaviour
     public void ContinuarJogo()
     {
         // Despausa o tempo e a física.
+        jogoEstaPausado = false;
         Time.timeScale = 1;
 
         // Oculta a tela de pausado.
