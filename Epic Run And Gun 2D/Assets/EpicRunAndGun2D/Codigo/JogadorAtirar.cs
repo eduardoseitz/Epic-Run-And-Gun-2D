@@ -1,24 +1,25 @@
 using UnityEngine;
 
-public class ogadorAtirar : MonoBehaviour
+public class JogadorAtirar : MonoBehaviour
 {
     // Variaveis publicas.
     public GameObject projetilPrefab;
     public Transform posicaoArma;
-    public JogadorMoviment jogadorMovimento;
+    public JogadorMovimento jogadorMovimento;
     public AudioSource somAoAtirar;
+    public string atirarInput = "Atirar";
     
     // Este metódo é chamado pela Unity no incio de cada quadro/frame.
     private void Update()
     {
         // Ao precionar o botão de atirar.
-        if (Input.GetButtonDown("Atirar"))
+        if (Input.GetButtonDown(atirarInput))
         {
             Atirar();
         }
     }
 
-    private void Atirar()
+    public void Atirar()
     {
         if (projetilPrefab == true && posicaoArma == true && jogadorMovimento == true)
         {

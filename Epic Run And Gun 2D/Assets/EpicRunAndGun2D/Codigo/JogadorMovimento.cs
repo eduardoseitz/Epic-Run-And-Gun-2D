@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class JogadorMoviment : MonoBehaviour
+public class JogadorMovimento : MonoBehaviour
 {
     // Variaveis publicas.
     public float velocidadeAoCaminhar = 8f;
@@ -9,7 +9,14 @@ public class JogadorMoviment : MonoBehaviour
     public int numeroMaximoDePulosSeguidos = 2;
     public AudioSource somAoPular;
     public Animator animador;
+    public FixedJoystick joystick;
     [HideInInspector] public bool estaOlhandoParaEsquerda;
+    public string horizontalInput = "Horizontal";
+    public string verticalInput = "Vertical";
+    public string pularInput = "Pular";
+    public string baixarAnimacao = "Abaixando";
+    public string pularAnimacao = "Pulando";
+    public string caminharAnimacao = "Caminhando";
     
     // Variaveis privadas.
     private float controleHorizontal;
@@ -29,18 +36,22 @@ public class JogadorMoviment : MonoBehaviour
     private void Update()
     {
         // Pegue o input s ou baixo
-        controleVertical = Input.GetAxisRaw("Vertical");
+        controleVertical = Input.GetAxisRaw(verticalInput);
+        if (joystick)
+            controleVertical = controleVertical + joystick.Vertical;
         if (controleVertical < 0)
             Abaixar();
         else
             Levantar();
 
         // Pegue o input esquerda, direita ou a, d
-        controleHorizontal = Input.GetAxisRaw("Horizontal");
-        Caminhar();
+        controleHorizontal = Input.GetAxisRaw(horizontalInput);
+        if (joystick)
+            controleHorizontal = controleHorizontal + joystick.Horizontal;
+        Caminhar(controleHorizontal);
 
         // Pegue o input w ou cima
-        if (Input.GetButtonDown("Pular"))
+        if (Input.GetButtonDown(pularInput))
         {
             Pular();
         }
@@ -57,7 +68,7 @@ public class JogadorMoviment : MonoBehaviour
             // Animar.
             if (animador == true)
             {
-                animador.SetBool("Pulando", false);
+                animador.SetBool(pularAnimacao, false);
             }
         }
     }
@@ -71,21 +82,18 @@ public class JogadorMoviment : MonoBehaviour
         }
     }
 
-    private void Caminhar()
+    public void Caminhar(float controleHorizontal)
     {
-        if (estaSeAbaixando == false)
-        {
-            // Move na direção correta.
-            transform.Translate(new Vector2(controleHorizontal * velocidadeAoCaminhar * Time.deltaTime, 0));
+        // Move na direção correta.
+        transform.Translate(new Vector2(controleHorizontal * velocidadeAoCaminhar * Time.deltaTime, 0));
 
-            // Animar.
-            if (animador)
-            {
-                animador.SetBool("Caminhando", (controleHorizontal != 0));
-            }
-            
-            OlharDirecao();
+        // Animar.
+        if (animador)
+        {
+            animador.SetBool(caminharAnimacao, (controleHorizontal != 0));
         }
+        
+        OlharDirecao();
     }
     
     private void OlharDirecao()
@@ -111,7 +119,7 @@ public class JogadorMoviment : MonoBehaviour
         }
     }
 
-    private void Pular()
+    public void Pular()
     {
         if (rigidbody2D == true && numeroDePulos < numeroMaximoDePulosSeguidos)
         {
@@ -127,14 +135,14 @@ public class JogadorMoviment : MonoBehaviour
             // Animar.
             if (animador == true)
             {
-                animador.SetBool("Pulando", true);
+                animador.SetBool(pularAnimacao, true);
             }
 
             numeroDePulos = numeroDePulos + 1;
         }
     }
 
-    private void Abaixar()
+    public void Abaixar()
     {
         if (seEstaNoChao == true && estaSeAbaixando == false)
         {
@@ -147,12 +155,12 @@ public class JogadorMoviment : MonoBehaviour
         // Animar.
         if (animador == true)
         {
-            animador.SetBool("Abaixando", true);
+            animador.SetBool(baixarAnimacao, true);
         }
         else transform.localScale = new Vector3(transform.localScale.x, escalaOriginal.y / 2, 1);
     }
-    
-    private void Levantar()
+
+    public void Levantar()
     {
         if (estaSeAbaixando == true)
         {
@@ -165,7 +173,7 @@ public class JogadorMoviment : MonoBehaviour
         // Animar.
         if (animador == true)
         {
-            animador.SetBool("Abaixando", false);
+            animador.SetBool(baixarAnimacao, false);
         }
         else transform.localScale = new Vector3(transform.localScale.x, escalaOriginal.y, 1);
     }
