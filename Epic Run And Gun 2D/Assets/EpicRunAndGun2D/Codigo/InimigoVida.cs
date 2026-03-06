@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class InimigoVida : MonoBehaviour
 {
@@ -6,19 +7,20 @@ public class InimigoVida : MonoBehaviour
     public int vidas = 3;
     public AudioSource somAoLevarDano;
     public Animator animador;
+    public string projetilTag = "Projetil";
+    public string morteTag = "Morte";
 
     // Ao colidir com outro objeto 2D.
     private void OnCollisionEnter2D(Collision2D outroObjeto)
     {
         // Checar o tipo de etiqueta no outro objeto.
-        switch (outroObjeto.gameObject.tag)
+        if (outroObjeto.gameObject.tag == projetilTag)
         {
-            case "Projetil":
-                TomarDano();
-                break;
-            case "Morte":
-                Morrer();
-                break;
+            TomarDano();
+        }
+        else if (outroObjeto.gameObject.tag == morteTag)
+        {
+            Morrer();
         }
     }
 

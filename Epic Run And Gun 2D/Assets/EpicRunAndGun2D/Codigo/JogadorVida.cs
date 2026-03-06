@@ -11,6 +11,11 @@ public class JogadorVida : MonoBehaviour
     public AudioSource somAoLevarDano;
     public AudioSource somAoGanharVida;
     public Animator animador;
+    public string projetilInimigoTag = "Projetil Inimigo";
+    public string inimigoTag = "Inimigo";
+    public string morteTag = "Morte";
+    public string ganharTag = "Ganhar";
+    public string vidaTag = "Vida";
     
     // Variaveis privadas.
     private int totalDeVidas;
@@ -26,33 +31,31 @@ public class JogadorVida : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D outroObjeto)
     {
         // Checar o tipo de etiqueta no outro objeto.
-        switch (outroObjeto.gameObject.tag)
+        if (outroObjeto.gameObject.tag == projetilInimigoTag)
         {
-            case "Projetil Inimigo":
-                MudarVida(-1);
-                break;
-            case "Inimigo":
-                MudarVida(-1);
-                break;
-            case "Morte":
-                MudarVida(-vidas);
-                break;
+            MudarVida(-1);
+        }
+        else if (outroObjeto.gameObject.tag == inimigoTag)
+        {
+            MudarVida(-1);
+        }
+        else if (outroObjeto.gameObject.tag == morteTag)
+        {
+            MudarVida(-vidas);
         }
     }
 
     // Ao colidir com outro objeto 2D do tipo trigger.
     private void OnTriggerEnter2D(Collider2D outroObjeto)
     {
-        switch (outroObjeto.gameObject.tag)
+        if (outroObjeto.gameObject.tag == ganharTag)
         {
-            case "Ganhar":
-                MudarVida(totalDeVidas);
-                Ganhar();
-                break;
-            case "Vida":
-                Destroy(outroObjeto.gameObject);
-                MudarVida(+1);
-                break;
+            Ganhar();
+        }
+        else if (outroObjeto.gameObject.tag == vidaTag)
+        {
+            Destroy(outroObjeto.gameObject);
+            MudarVida(+1);
         }
     }
 
