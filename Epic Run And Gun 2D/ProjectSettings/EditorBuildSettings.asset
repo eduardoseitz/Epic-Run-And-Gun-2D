@@ -6,10 +6,10 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/DO NOT SHIP/DevPenguin/Cenas/Menu.unity
+    path: Assets/DevPenguin/Cenas/Menu.unity
     guid: 9283b70b295977a4bbda86c6ae798bdd
   - enabled: 1
-    path: Assets/DO NOT SHIP/DevPenguin/Cenas/Level1.unity
+    path: Assets/DevPenguin/Cenas/Level1.unity
     guid: 09db2ab17a958a64b98dc1a3c53c9f22
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}

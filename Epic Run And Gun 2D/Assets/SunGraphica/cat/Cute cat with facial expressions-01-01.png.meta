@@ -1,0 +1,364 @@
+fileFormatVersion: 2
+guid: f7558376ac7bc91449dcb95cc4baf9e0
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 8679042395322614013
+    second: Cute cat with facial expressions-01-01_0
+  - first:
+      213: 4516210193235386794
+    second: Cute cat with facial expressions-01-01_1
+  - first:
+      213: 1708595927060917528
+    second: Cute cat with facial expressions-01-01_2
+  - first:
+      213: 317676821648495122
+    second: Cute cat with facial expressions-01-01_3
+  - first:
+      213: -3435534307138912067
+    second: Cute cat with facial expressions-01-01_4
+  - first:
+      213: 1614323796157252735
+    second: Cute cat with facial expressions-01-01_5
+  - first:
+      213: -7005696691656605045
+    second: Cute cat with facial expressions-01-01_6
+  - first:
+      213: -9022798029033863239
+    second: Cute cat with facial expressions-01-01_7
+  - first:
+      213: -7086686435613229115
+    second: Cute cat with facial expressions-01-01_8
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Cute cat with facial expressions-01-01_0
+      rect:
+        serializedVersion: 2
+        x: 687
+        y: 3167
+        width: 578
+        height: 772
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: df082c33317227870800000000000000
+      internalID: 8679042395322614013
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cute cat with facial expressions-01-01_1
+      rect:
+        serializedVersion: 2
+        x: 2040
+        y: 3188
+        width: 578
+        height: 755
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aa12bca2e3dccae30800000000000000
+      internalID: 4516210193235386794
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cute cat with facial expressions-01-01_2
+      rect:
+        serializedVersion: 2
+        x: 3274
+        y: 3174
+        width: 587
+        height: 754
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 81d252171f626b710800000000000000
+      internalID: 1708595927060917528
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cute cat with facial expressions-01-01_3
+      rect:
+        serializedVersion: 2
+        x: 687
+        y: 1909
+        width: 623
+        height: 772
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 212dbbbd26d986400800000000000000
+      internalID: 317676821648495122
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cute cat with facial expressions-01-01_4
+      rect:
+        serializedVersion: 2
+        x: 2005
+        y: 1909
+        width: 601
+        height: 750
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: db04159ffb78250d0800000000000000
+      internalID: -3435534307138912067
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cute cat with facial expressions-01-01_5
+      rect:
+        serializedVersion: 2
+        x: 3258
+        y: 1926
+        width: 588
+        height: 755
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f74c96680fa376610800000000000000
+      internalID: 1614323796157252735
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cute cat with facial expressions-01-01_6
+      rect:
+        serializedVersion: 2
+        x: 682
+        y: 651
+        width: 619
+        height: 664
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b82cda90af3c6ce90800000000000000
+      internalID: -7005696691656605045
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cute cat with facial expressions-01-01_7
+      rect:
+        serializedVersion: 2
+        x: 1978
+        y: 653
+        width: 670
+        height: 570
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9b787575ff498c280800000000000000
+      internalID: -9022798029033863239
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cute cat with facial expressions-01-01_8
+      rect:
+        serializedVersion: 2
+        x: 3262
+        y: 628
+        width: 583
+        height: 814
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5cfb1b2db3807ad90800000000000000
+      internalID: -7086686435613229115
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Cute cat with facial expressions-01-01_0: 8679042395322614013
+      Cute cat with facial expressions-01-01_1: 4516210193235386794
+      Cute cat with facial expressions-01-01_2: 1708595927060917528
+      Cute cat with facial expressions-01-01_3: 317676821648495122
+      Cute cat with facial expressions-01-01_4: -3435534307138912067
+      Cute cat with facial expressions-01-01_5: 1614323796157252735
+      Cute cat with facial expressions-01-01_6: -7005696691656605045
+      Cute cat with facial expressions-01-01_7: -9022798029033863239
+      Cute cat with facial expressions-01-01_8: -7086686435613229115
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
